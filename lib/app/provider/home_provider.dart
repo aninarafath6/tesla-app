@@ -2,12 +2,21 @@ import 'package:flutter/material.dart';
 
 class HomeProvider with ChangeNotifier {
   bool rightLock = false;
+  bool leftLock = false;
+  bool bonetLock = false;
+  bool trunkLock = false;
 
   void updateLock(Lock lock) {
     if (lock == Lock.rightDoorLcok) {
       rightLock = !rightLock;
-      notifyListeners();
+    } else if (lock == Lock.leftDoorLock) {
+      leftLock = !leftLock;
+    } else if (lock == Lock.bonnetLock) {
+      bonetLock = !bonetLock;
+    } else {
+      trunkLock = !trunkLock;
     }
+    notifyListeners();
   }
 }
 
