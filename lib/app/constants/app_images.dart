@@ -2,6 +2,7 @@ class AppImages {
   static const String teslaCar = 'assets/icons/Car.svg';
   static const String lock = 'assets/icons/door_lock.svg';
   static const String unlock = 'assets/icons/door_unlock.svg';
+  static const String battery = 'assets/icons/Battery.svg';
 
   // bottom navgation icons
   static const String lockIcon = 'assets/icons/Lock.svg';

@@ -11,8 +11,16 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNav(
+        onTap: (index) {
+          if (index == 1) {
+            context.read<HomeProvider>().animationController.forward();
+          } else if (context.read<HomeProvider>().selectedNav == 1 &&
+              index != 1) {
+            context.read<HomeProvider>().animationController.reverse(from: .7);
+          }
+          context.read<HomeProvider>().onChangeBottomNav(index);
+        },
         selectedTab: context.watch<HomeProvider>().selectedNav,
-        onTap: context.read<HomeProvider>().onChangeBottomNav,
       ),
       body: const SafeArea(
         child: CarDoorLock(),

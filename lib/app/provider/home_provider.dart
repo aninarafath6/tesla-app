@@ -9,6 +9,8 @@ class HomeProvider with ChangeNotifier {
   bool bonetLock = false;
   bool trunkLock = false;
 
+  late AnimationController animationController;
+
   void onChangeBottomNav(int index) {
     selectedNav = index;
     notifyListeners();

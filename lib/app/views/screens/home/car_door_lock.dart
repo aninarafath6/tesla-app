@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:tesla/app/constants/app_images.dart';
 import 'package:tesla/app/constants/app_sizes.dart';
 import 'package:tesla/app/provider/home_provider.dart';
+import 'package:tesla/app/views/screens/battery/battery_section.dart';
 import 'package:tesla/app/views/screens/home/door_lock.dart';
 
 class CarDoorLock extends StatelessWidget {
@@ -83,6 +84,7 @@ class CarDoorLock extends StatelessWidget {
               ),
             ),
           ),
+          BatterySection(),
         ],
       );
     });
