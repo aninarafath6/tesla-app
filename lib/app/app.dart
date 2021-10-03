@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.dark,
           scaffoldBackgroundColor: Colors.black,
         ),
-        home: const HomeScreen(),
+        home:  HomeScreen(),
       ),
     );
   }

@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:tesla/app/constants/app_images.dart';
 import 'package:tesla/app/constants/app_sizes.dart';
 import 'package:tesla/app/provider/home_provider.dart';
+import 'package:tesla/app/utils/custom_animation_controller.dart';
 import 'package:tesla/app/views/screens/battery/battery_section.dart';
 import 'package:tesla/app/views/screens/home/lock_alignment.dart';
 import 'package:tesla/app/views/screens/temp/temperature_section.dart';
@@ -23,18 +24,22 @@ class _CarDoorLockState extends State<CarDoorLock>
 
   @override
   void initState() {
-    context.read<HomeProvider>().tempAnimationController = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 600));
+    // context.read<HomeProvider>().tempAnimationController = AnimationController(
+    //     vsync: this, duration: const Duration(milliseconds: 600));
+    CustomAnimationController.setTempAnimation(
+      tickerProvider: this,
+      duration: const Duration(milliseconds: 600),
+    );
     _posAnimation = CurvedAnimation(
-        parent: context.read<HomeProvider>().tempAnimationController,
-        curve: const Interval(0.6, 1));
+        parent: CustomAnimationController.tempAnimationController,
+        curve: const Interval(0, .4));
 
     super.initState();
   }
 
   @override
   void dispose() {
-    context.read<HomeProvider>().tempAnimationController.dispose();
+    CustomAnimationController.disposeTempAnimation();
     super.dispose();
   }
 
@@ -46,7 +51,7 @@ class _CarDoorLockState extends State<CarDoorLock>
         alignment: Alignment.center,
         children: [
           AnimatedBuilder(
-              animation: context.read<HomeProvider>().tempAnimationController,
+              animation: CustomAnimationController.tempAnimationController,
               builder: (context, _) {
                 return Transform.translate(
                   offset: Offset(_posAnimation.value * 180, 0),

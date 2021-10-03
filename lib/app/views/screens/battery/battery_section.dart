@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:provider/src/provider.dart';
 import 'package:tesla/app/constants/app_images.dart';
 import 'package:tesla/app/provider/home_provider.dart';
+import 'package:tesla/app/utils/custom_animation_controller.dart';
 import 'package:tesla/app/views/screens/battery/battery_status.dart';
 
 class BatterySection extends StatefulWidget {
@@ -22,31 +23,35 @@ class _BatterySectionState extends State<BatterySection>
   @override
   void initState() {
     super.initState();
-    context.read<HomeProvider>().animationController = AnimationController(
-      vsync: this,
-      duration: const Duration(
-        milliseconds: 600,
-      ),
-    );
+    // context.read<HomeProvider>().animationController = AnimationController(
+    //   vsync: this,
+    //   duration: const Duration(
+    //     milliseconds: 600,
+    //   ),
+    // );
+
+    CustomAnimationController.setBatteryAnimation(
+        tickerProvider: this, duration: const Duration(milliseconds: 600));
+
     _batteryAnimation = CurvedAnimation(
-        parent: context.read<HomeProvider>().animationController,
+        parent: CustomAnimationController.batteryAnimationController,
         curve: const Interval(0, .5));
     _batteryStatusAnimation = CurvedAnimation(
-      parent: context.read<HomeProvider>().animationController,
-      curve: const Interval(0.6, 1),
+      parent: CustomAnimationController.batteryAnimationController,
+      curve: const Interval(0.8, 1),
     );
   }
 
   @override
   void dispose() {
-    context.read<HomeProvider>().animationController.dispose();
+    CustomAnimationController.disposeBatteryAnimation();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
-      animation: context.read<HomeProvider>().animationController,
+      animation: CustomAnimationController.batteryAnimationController,
       builder: (context, _) {
         return Stack(
           alignment: Alignment.center,
