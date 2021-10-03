@@ -3,6 +3,7 @@ class AppImages {
   static const String lock = 'assets/icons/door_lock.svg';
   static const String unlock = 'assets/icons/door_unlock.svg';
   static const String battery = 'assets/icons/Battery.svg';
+  static const String cool = 'assets/images/Cool_glow_2.png';
 
   // bottom navgation icons
   static const String lockIcon = 'assets/icons/Lock.svg';

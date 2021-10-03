@@ -18,6 +18,12 @@ class HomeScreen extends StatelessWidget {
               index != 1) {
             context.read<HomeProvider>().animationController.reverse(from: .7);
           }
+          if (index == 2) {
+            context.read<HomeProvider>().tempAnimationController.forward();
+          } else if (context.read<HomeProvider>().selectedNav == 2 &&
+              index != 2) {
+            context.read<HomeProvider>().tempAnimationController.reverse();
+          }
           context.read<HomeProvider>().onChangeBottomNav(index);
         },
         selectedTab: context.watch<HomeProvider>().selectedNav,
