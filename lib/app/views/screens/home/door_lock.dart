@@ -6,11 +6,7 @@ import 'package:tesla/app/constants/app_sizes.dart';
 import 'package:tesla/app/provider/home_provider.dart';
 
 class DoorLock extends StatelessWidget {
-  const DoorLock({
-    Key? key,
-    this.isLocked,
-    this.door
-  }) : super(key: key);
+  const DoorLock({Key? key, this.isLocked, this.door}) : super(key: key);
 
   final bool? isLocked;
   final Lock? door;
@@ -18,11 +14,11 @@ class DoorLock extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
+      onTap: () async {
         context.read<HomeProvider>().updateLock(door!);
       },
       child: AnimatedSwitcher(
-        duration: AppSizes.defualtDuration,
+        duration: AppSizes.defaultDuration,
         switchInCurve: Curves.easeInOutBack,
         transitionBuilder: (child, animation) {
           return ScaleTransition(

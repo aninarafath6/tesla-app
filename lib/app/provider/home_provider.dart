@@ -6,7 +6,7 @@ class HomeProvider with ChangeNotifier {
   // door locks
   bool rightLock = false;
   bool leftLock = false;
-  bool bonetLock = false;
+  bool bonnetLock = false;
   bool trunkLock = false;
 
   late AnimationController animationController;
@@ -17,12 +17,12 @@ class HomeProvider with ChangeNotifier {
   }
 
   void updateLock(Lock lock) {
-    if (lock == Lock.rightDoorLcok) {
+    if (lock == Lock.rightDoorLock) {
       rightLock = !rightLock;
     } else if (lock == Lock.leftDoorLock) {
       leftLock = !leftLock;
     } else if (lock == Lock.bonnetLock) {
-      bonetLock = !bonetLock;
+      bonnetLock = !bonnetLock;
     } else {
       trunkLock = !trunkLock;
     }
@@ -31,7 +31,7 @@ class HomeProvider with ChangeNotifier {
 }
 
 enum Lock {
-  rightDoorLcok,
+  rightDoorLock,
   leftDoorLock,
   trunkLook,
   bonnetLock,

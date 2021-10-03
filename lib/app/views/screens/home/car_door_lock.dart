@@ -6,6 +6,7 @@ import 'package:tesla/app/constants/app_sizes.dart';
 import 'package:tesla/app/provider/home_provider.dart';
 import 'package:tesla/app/views/screens/battery/battery_section.dart';
 import 'package:tesla/app/views/screens/home/door_lock.dart';
+import 'package:tesla/app/views/screens/home/lock_alignment.dart';
 
 class CarDoorLock extends StatelessWidget {
   const CarDoorLock({
@@ -28,63 +29,33 @@ class CarDoorLock extends StatelessWidget {
               width: double.infinity,
             ),
           ),
-          AnimatedPositioned(
-            duration: AppSizes.defualtDuration,
-            right: context.watch<HomeProvider>().selectedNav == 0
-                ? constrains.maxWidth * .03
-                : constrains.maxWidth / 2,
-            child: AnimatedOpacity(
-              opacity: context.watch<HomeProvider>().selectedNav == 0 ? 1 : 0,
-              duration: AppSizes.defualtDuration,
-              child: DoorLock(
-                door: Lock.rightDoorLcok,
-                isLocked: provider.rightLock,
-              ),
-            ),
+          LockAlignment(
+            constraints: constrains,
+            door: Lock.rightDoorLock,
+            isLocked: provider.rightLock,
+            align: Alignment.centerRight,
           ),
-          AnimatedPositioned(
-            duration: AppSizes.defualtDuration,
-            left: context.watch<HomeProvider>().selectedNav == 0
-                ? constrains.maxWidth * .03
-                : constrains.maxWidth / 2,
-            child: AnimatedOpacity(
-              opacity: context.watch<HomeProvider>().selectedNav == 0 ? 1 : 0,
-              duration: AppSizes.defualtDuration,
-              child: DoorLock(
-                door: Lock.leftDoorLock,
-                isLocked: provider.leftLock,
-              ),
-            ),
+          LockAlignment(
+            constraints: constrains,
+            door: Lock.leftDoorLock,
+            isLocked: provider.leftLock,
+            align: Alignment.centerLeft,
           ),
-          AnimatedPositioned(
-            duration: AppSizes.defualtDuration,
-            top: context.watch<HomeProvider>().selectedNav == 0
-                ? constrains.maxHeight * .13
-                : constrains.maxHeight / 2,
-            child: AnimatedOpacity(
-              opacity: context.watch<HomeProvider>().selectedNav == 0 ? 1 : 0,
-              duration: AppSizes.defualtDuration,
-              child: DoorLock(
-                door: Lock.bonnetLock,
-                isLocked: provider.bonetLock,
-              ),
-            ),
+          LockAlignment(
+            constraints: constrains,
+            door: Lock.bonnetLock,
+            isLocked: provider.bonnetLock,
+            align: Alignment.topCenter,
           ),
-          AnimatedPositioned(
-            duration: AppSizes.defualtDuration,
-            bottom: context.watch<HomeProvider>().selectedNav == 0
-                ? constrains.maxHeight * .17
-                : constrains.maxHeight / 2,
-            child: AnimatedOpacity(
-              opacity: context.watch<HomeProvider>().selectedNav == 0 ? 1 : 0,
-              duration: AppSizes.defualtDuration,
-              child: DoorLock(
-                door: Lock.trunkLook,
-                isLocked: provider.trunkLock,
-              ),
-            ),
+          LockAlignment(
+            constraints: constrains,
+            door: Lock.trunkLook,
+            isLocked: provider.trunkLock,
+            align: Alignment.bottomCenter,
           ),
-          BatterySection(),
+          BatterySection(
+            constraints: constrains,
+          ),
         ],
       );
     });

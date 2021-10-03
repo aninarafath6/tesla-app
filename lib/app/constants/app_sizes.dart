@@ -1,4 +1,4 @@
 class AppSizes {
   static const double defualtPadding = 16;
-  static const Duration defualtDuration = Duration(milliseconds: 300);
+  static const Duration defaultDuration = Duration(milliseconds: 300);
 }
