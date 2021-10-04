@@ -56,82 +56,90 @@ class _TempStatusState extends State<TempStatus> with TickerProviderStateMixin {
       child: AnimatedBuilder(
           animation: heatAnimationController,
           builder: (context, _) {
-            return Row(
+            return Stack(
               children: [
-                Transform.translate(
-                  offset: Offset(0, -coolAnimation.value * 70),
-                  child: GestureDetector(
-                    onTap: () {
-                      heatAnimationController.reverse();
-                      coolAnimationController.forward();
-                      _provider.updateTempStatus(Temp.cool);
-                    },
-                    child: AnimatedScale(
-                      duration: AppSizes.defaultDuration,
-                      scale: !_provider.isCool ? 0.8 : 1,
-                      child: Column(
-                        children: <Widget>[
-                          SvgPicture.asset(
-                            AppImages.coolButton,
-                            width: 55,
-                            color: _provider.isCool
-                                ? AppColors.primaryColor
-                                : Colors.grey,
-                          ),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          Text(
-                            'Cool'.toUpperCase(),
-                            style:
-                                Theme.of(context).textTheme.subtitle2!.copyWith(
+                Row(
+                  children: [
+                    Transform.translate(
+                      offset: Offset(0, -coolAnimation.value * 70),
+                      child: GestureDetector(
+                        onTap: () {
+                          heatAnimationController.reverse();
+                          coolAnimationController.forward();
+                          _provider.updateTempStatus(Temp.cool);
+                        },
+                        child: AnimatedScale(
+                          duration: AppSizes.defaultDuration,
+                          scale: !_provider.isCool ? 0.8 : 1,
+                          child: Column(
+                            children: <Widget>[
+                              SvgPicture.asset(
+                                AppImages.coolButton,
+                                width: 55,
+                                color: _provider.isCool
+                                    ? AppColors.primaryColor
+                                    : Colors.grey,
+                              ),
+                              const SizedBox(
+                                height: 5,
+                              ),
+                              Text(
+                                'Cool'.toUpperCase(),
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .subtitle2!
+                                    .copyWith(
                                       color: _provider.isCool
                                           ? AppColors.primaryColor
                                           : Colors.grey,
                                     ),
+                              ),
+                            ],
                           ),
-                        ],
+                        ),
                       ),
                     ),
-                  ),
-                ),
-                const SizedBox(width: 15),
-                Transform.translate(
-                  offset: Offset(0, (-1 + heatAnimation.value) * 70),
-                  child: GestureDetector(
-                    onTap: () {
-                      heatAnimationController.forward();
-                      coolAnimationController.reverse();
-                      _provider.updateTempStatus(Temp.heat);
-                    },
-                    child: AnimatedScale(
-                      duration: AppSizes.defaultDuration,
-                      scale: _provider.isCool ? 0.8 : 1,
-                      child: Column(
-                        children: <Widget>[
-                          SvgPicture.asset(
-                            AppImages.heatButton,
-                            width: 55,
-                            color: !_provider.isCool
-                                ? AppColors.redColor
-                                : Colors.grey,
-                          ),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          Text(
-                            'heat'.toUpperCase(),
-                            style:
-                                Theme.of(context).textTheme.subtitle2!.copyWith(
+                    const SizedBox(width: 15),
+                    Transform.translate(
+                      offset: Offset(0, (-1 + heatAnimation.value) * 70),
+                      child: GestureDetector(
+                        onTap: () {
+                          heatAnimationController.forward();
+                          coolAnimationController.reverse();
+                          _provider.updateTempStatus(Temp.heat);
+                        },
+                        child: AnimatedScale(
+                          duration: AppSizes.defaultDuration,
+                          scale: _provider.isCool ? 0.8 : 1,
+                          child: Column(
+                            children: <Widget>[
+                              SvgPicture.asset(
+                                AppImages.heatButton,
+                                width: 55,
+                                color: !_provider.isCool
+                                    ? AppColors.redColor
+                                    : Colors.grey,
+                              ),
+                              const SizedBox(
+                                height: 5,
+                              ),
+                              Text(
+                                'heat'.toUpperCase(),
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .subtitle2!
+                                    .copyWith(
                                       color: !_provider.isCool
                                           ? AppColors.redColor
                                           : Colors.grey,
                                     ),
+                              ),
+                            ],
                           ),
-                        ],
+                        ),
                       ),
                     ),
-                  ),
+                  ],
                 ),
               ],
             );

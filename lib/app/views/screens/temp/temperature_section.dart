@@ -76,7 +76,7 @@ class _TemperatureSectionState extends State<TemperatureSection>
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(top: (1 - posAnimation.value) * 50),
+                padding:  EdgeInsets.only(top:(1-posAnimation.value)*50),
                 child: Opacity(
                   opacity: _opacityAnimation.value,
                   child: TempStatus(),
