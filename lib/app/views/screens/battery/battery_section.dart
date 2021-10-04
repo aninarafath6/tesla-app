@@ -23,13 +23,6 @@ class _BatterySectionState extends State<BatterySection>
   @override
   void initState() {
     super.initState();
-    // context.read<HomeProvider>().animationController = AnimationController(
-    //   vsync: this,
-    //   duration: const Duration(
-    //     milliseconds: 600,
-    //   ),
-    // );
-
     CustomAnimationController.setBatteryAnimation(
         tickerProvider: this, duration: const Duration(milliseconds: 600));
 
