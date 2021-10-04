@@ -86,7 +86,7 @@ class _TemperatureSectionState extends State<TemperatureSection>
                 return Row(
                   children: [
                     Transform.translate(
-                      offset: Offset(0, -coolAnimation.value * 80),
+                      offset: Offset(0, -coolAnimation.value * 70),
                       child: GestureDetector(
                         onTap: () {
                           heatAnimationController.reverse();
@@ -100,7 +100,7 @@ class _TemperatureSectionState extends State<TemperatureSection>
                             children: <Widget>[
                               SvgPicture.asset(
                                 AppImages.coolButton,
-                                width: 50,
+                                width: 55,
                                 color: _provider.isCool
                                     ? AppColors.primaryColor
                                     : Colors.grey,
@@ -124,9 +124,9 @@ class _TemperatureSectionState extends State<TemperatureSection>
                         ),
                       ),
                     ),
-                    const SizedBox(width: 25),
+                    const SizedBox(width: 15),
                     Transform.translate(
-                      offset: Offset(0, (-1 + heatAnimation.value) * 80),
+                      offset: Offset(0, (-1 + heatAnimation.value) * 70),
                       child: GestureDetector(
                         onTap: () {
                           heatAnimationController.forward();
@@ -140,7 +140,7 @@ class _TemperatureSectionState extends State<TemperatureSection>
                             children: <Widget>[
                               SvgPicture.asset(
                                 AppImages.heatButton,
-                                width: 50,
+                                width: 55,
                                 color: !_provider.isCool
                                     ? AppColors.redColor
                                     : Colors.grey,
