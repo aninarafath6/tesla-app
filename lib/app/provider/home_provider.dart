@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tesla/app/utils/enums.dart';
 
 class HomeProvider with ChangeNotifier {
   int selectedNav = 0;
@@ -9,6 +10,20 @@ class HomeProvider with ChangeNotifier {
   bool bonnetLock = false;
   bool trunkLock = false;
 
+  late BoxConstraints constraints;
+
+// temp section
+
+  bool isCool = true;
+
+  void updateTempStatus(Temp temp) {
+    if (temp == Temp.cool) {
+      isCool = true;
+    } else {
+      isCool = false;
+    }
+    notifyListeners();
+  }
 
   void onChangeBottomNav(int index) {
     selectedNav = index;
@@ -27,11 +42,4 @@ class HomeProvider with ChangeNotifier {
     }
     notifyListeners();
   }
-}
-
-enum Lock {
-  rightDoorLock,
-  leftDoorLock,
-  trunkLook,
-  bonnetLock,
 }

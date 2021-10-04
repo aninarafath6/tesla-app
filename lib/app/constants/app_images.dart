@@ -12,7 +12,9 @@ class AppImages {
 
   // temperature icons
   static const String cool = 'assets/images/Cool_glow_2.png';
+  static const String heat = 'assets/images/Hot_glow_4.png';
   static const String coolButton = 'assets/icons/coolShape.svg';
+  static const String heatButton = 'assets/icons/heatShape.svg';
 
   List<String> bottomItems = [
     lockIcon,
